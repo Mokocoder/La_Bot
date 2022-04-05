@@ -1,0 +1,20 @@
+{
+    "name": "labot",
+    "description": "Api를 이용한 로아봇",
+    "keywords": [
+      "lostark",
+      "game"
+    ],
+    "repository": "https://github.com/Mokocoder/La_Bot",
+    "env": {
+      "DISCORD_TOKEN": {
+        "description": "디스코드 봇 토큰",
+        "required": true
+      }
+    },
+    "buildpacks": [
+      {
+        "url": "heroku/python"
+      }
+    ]
+  }
