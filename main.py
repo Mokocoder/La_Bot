@@ -127,15 +127,19 @@ async def 모험섬(ctx: discord.ApplicationContext):
         await ctx.respond("DM금지")
     else:
         try:
+            await ctx.defer(ephemeral=False)
+            
+            message = await ctx.interaction.original_message()
+            
             loop = asyncio.get_event_loop()
             response = loop.run_until_complete(get_req('http://152.70.248.4:5000/adventureisland/'))
 
             embedresult_island = calmodule.embedresult_island(response)
             
-            await ctx.respond("", embed=embedresult_island)
+            await message.edit("", embed=embedresult_island)
         except Exception as error:
             embederr = discord.Embed(title="알 수 없는 오류가 발생했습니다./몇 시간 이후 다시 시도해주세요.", color=discord.Color.red())
-            await ctx.respond("", embed=embederr, view=None)
+            await message.edit("", embed=embederr)
             print(error)
 
 @client.slash_command(name="사사게",description="사사게 확인")
