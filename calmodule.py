@@ -300,8 +300,9 @@ def embedresult_gearlist(response:json):
         try:
             eqname = response["Items"][items]["Name"]
             tri = ""
-            for t in response["Items"][items]["Tri"]:
-                tri = tri + "[`"+t["SkillName"] +"`] " + t["Effect"] + "\n"
+            if not response["Items"][items]["Tri"] == "트라이포드 효과 적용 불가":
+                for t in response["Items"][items]["Tri"]:
+                    tri = tri + "[`"+t["SkillName"] +"`] " + t["Effect"] + "\n"
             gearlist = gearlist + ("**◻"+eqname + " | `품질` : " + response["Items"][items]["Quality"] + "**\n" + tri) + "\n"
         except Exception:
             pass
@@ -310,8 +311,9 @@ def embedresult_gearlist(response:json):
         try:
             eqname = response["Items"][items]["Name"]
             tri = ""
-            for t in response["Items"][items]["Tri"]:
-                tri = tri + "[`"+t["SkillName"] +"`] " + t["Effect"] + "\n"
+            if not response["Items"][items]["Tri"] == "트라이포드 효과 적용 불가":
+                for t in response["Items"][items]["Tri"]:
+                    tri = tri + "[`"+t["SkillName"] +"`] " + t["Effect"] + "\n"
             gearlist2 = gearlist2 + ("**◻"+eqname + " | `품질` : " + response["Items"][items]["Quality"] + "**\n" + tri) + "\n"
         except Exception:
             pass
